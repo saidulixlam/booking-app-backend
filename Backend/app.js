@@ -2,17 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors= require('cors');
 const sequelize = require('./utils/database');
-
-const { Sequelize, DataTypes } = require("sequelize");
-const Appointment = require("./models/appointment")
 const controller = require("./controller/controller");
 
-// Initialize Express app
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// Sync the model with the database
 (async () => {
   await sequelize.sync();
   console.log("Appointment model synced with database.");
